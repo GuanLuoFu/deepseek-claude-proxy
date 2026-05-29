@@ -15,7 +15,7 @@ DeepSeek 官方提供的 Anthropic-compatible API (`/anthropic`) 与标准 Claud
 
 ### 1. 克隆仓库
 ```bash
-git clone https://github.com/你的用户名/deepseek-claude-proxy.git
+git clone https://github.com/GuanLuoFu/deepseek-claude-proxy.git
 cd deepseek-claude-proxy
 ```
 
@@ -28,10 +28,18 @@ node proxy.js
 ```
 代理默认监听 `http://127.0.0.1:8080`。
 
-### 4. 配置你的 Claude 客户端
-将 API 端点指向代理地址：
+### 4. 配置 Claude Code
+
+设置环境变量，将请求指向本地代理（Claude Code 会自动拼接 `/v1/messages`）：
+
+```bash
+export ANTHROPIC_BASE_URL=http://127.0.0.1:8080
+# ANTHROPIC_MODEL 和 ANTHROPIC_AUTH_TOKEN 保持不变
 ```
-http://127.0.0.1:8080/v1/messages
+
+Windows (PowerShell):
+```powershell
+$env:ANTHROPIC_BASE_URL="http://127.0.0.1:8080"
 ```
 
 ## 工作原理
